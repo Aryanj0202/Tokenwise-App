@@ -1,0 +1,325 @@
+.dashboard {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.dashboard-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 50vh;
+  gap: 1rem;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid var(--border-color);
+  border-top: 4px solid var(--primary-color);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+  gap: 2rem;
+}
+
+.dashboard-title h1 {
+  font-size: 2rem;
+  font-weight: var(--font-bold);
+  color: var(--text-primary);
+  margin: 0 0 0.5rem 0;
+}
+
+.dashboard-subtitle {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  margin: 0;
+}
+
+.dashboard-controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-shrink: 0;
+}
+
+.connection-indicator {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background-color: var(--bg-secondary);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-color);
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--danger-color);
+  animation: pulse 2s infinite;
+}
+
+.status-dot.online {
+  background-color: var(--success-color);
+}
+
+.status-dot.offline {
+  background-color: var(--danger-color);
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
+.dashboard-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.stat-card {
+  background-color: var(--bg-secondary);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  border: 1px solid var(--border-color);
+  position: relative;
+  overflow: hidden;
+}
+
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+}
+
+.stat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.stat-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.stat-icon.buy {
+  background-color: var(--success-color);
+}
+
+.stat-icon.sell {
+  background-color: var(--danger-color);
+}
+
+.stat-icon.volume {
+  background-color: var(--info-color);
+}
+
+.stat-icon.wallets {
+  background-color: var(--warning-color);
+}
+
+.stat-trend {
+  font-size: 0.75rem;
+  font-weight: var(--font-medium);
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--radius-sm);
+}
+
+.stat-trend.positive {
+  background-color: rgba(16, 185, 129, 0.1);
+  color: var(--success-color);
+}
+
+.stat-trend.negative {
+  background-color: rgba(239, 68, 68, 0.1);
+  color: var(--danger-color);
+}
+
+.stat-value {
+  font-size: 2rem;
+  font-weight: var(--font-bold);
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.stat-label {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  font-weight: var(--font-medium);
+}
+
+.dashboard-content {
+  width: 100%;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1.5rem;
+  grid-template-areas: 
+    "chart-large chart-large chart-large chart-large chart-large chart-large protocol protocol protocol activity activity activity"
+    "wallets wallets wallets wallets wallets wallets transactions transactions transactions transactions transactions transactions";
+}
+
+.grid-item {
+  min-height: 400px;
+}
+
+.chart-large {
+  grid-area: chart-large;
+}
+
+.grid-item:nth-child(2) {
+  grid-area: protocol;
+}
+
+.grid-item:nth-child(3) {
+  grid-area: activity;
+}
+
+.wallets-list {
+  grid-area: wallets;
+}
+
+.transactions-monitor {
+  grid-area: transactions;
+}
+
+.card-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.btn-sm {
+  padding: 0.5rem;
+  font-size: 0.75rem;
+}
+
+.net-direction {
+  font-size: 0.875rem;
+  font-weight: var(--font-semibold);
+  text-transform: capitalize;
+}
+
+.live-indicator {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--success-color);
+  font-size: 0.875rem;
+  font-weight: var(--font-medium);
+}
+
+.pulse-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--success-color);
+  animation: pulse 1.5s infinite;
+}
+
+@media (max-width: 1200px) {
+  .dashboard-grid {
+    grid-template-areas: 
+      "chart-large chart-large chart-large chart-large chart-large chart-large chart-large chart-large protocol protocol protocol protocol"
+      "activity activity activity activity activity activity wallets wallets wallets wallets wallets wallets"
+      "transactions transactions transactions transactions transactions transactions transactions transactions transactions transactions transactions transactions";
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+  
+  .dashboard-controls {
+    justify-content: space-between;
+  }
+  
+  .dashboard-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+      "chart-large"
+      "protocol"
+      "activity"
+      "wallets"
+      "transactions";
+  }
+  
+  .grid-item {
+    min-height: 350px;
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard-stats {
+    grid-template-columns: 1fr;
+  }
+  
+  .dashboard-title h1 {
+    font-size: 1.5rem;
+  }
+  
+  .stat-value {
+    font-size: 1.5rem;
+  }
+}
+
+.dark .dashboard {
+  color: var(--text-primary-dark);
+}
+
+.dark .stat-card {
+  background-color: var(--bg-secondary-dark);
+  border-color: var(--border-color-dark);
+}
+
+.dark .connection-indicator {
+  background-color: var(--bg-secondary-dark);
+  border-color: var(--border-color-dark);
+  color: var(--text-secondary-dark);
+}
+
+.dark .stat-value {
+  color: var(--text-primary-dark);
+}
+
+.dark .stat-label {
+  color: var(--text-secondary-dark);
+}
